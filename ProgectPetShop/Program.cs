@@ -10,6 +10,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.MapDefaultControllerRoute();
 
-new Startup();
+new ExampleDBSetup();
 
 app.Run();
