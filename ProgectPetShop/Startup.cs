@@ -1,8 +1,8 @@
 ﻿namespace ProgectPetShop
 {
-    public class Startup
+    public class ExampleDBSetup
     {
-        public Startup()
+        public ExampleDBSetup()
         {
             DBReset();
             DBAddCategories();
@@ -22,10 +22,10 @@
         {
             using (var db = new PetShopContext())
             {
-                db.Categories.Add(new Category { Name = "Foo" });
-                db.Categories.Add(new Category { Name = "Bar" });
-                db.Categories.Add(new Category { Name = "Amir" });
-                db.Categories.Add(new Category { Name = "Adler" });
+                db.Categories!.Add(new Category { Name = "categ1" });
+                db.Categories.Add(new Category { Name = "categ2" });
+                db.Categories.Add(new Category { Name = "test1" });
+                db.Categories.Add(new Category { Name = "test2" });
                 db.SaveChanges();
             }
         }
