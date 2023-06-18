@@ -1,0 +1,56 @@
+﻿@model ProgectPetShop.Animal
+@{
+    ViewBag.ShowNavBar = false;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="animal">
+    <div class="header">
+        <div>
+            The @Model?.Name
+        </div>
+    </div>
+    <div class="row">
+        <div class="descripion col-4">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <td>@Model!.Name</td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>@Model!.Age</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>@Model!.Description</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>@ViewBag.Category</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-5">
+            <div class="comments">
+                <h2>Commments:</h2>
+                <div class="numbered-lines">
+                    @foreach (var comment in Model!.Comments!)
+                    {
+                        <p>@comment.Text</p>
+                    }
+                </div>
+            </div>
+            <div class="addComment">
+                <form method="POST" action="/Catalog/AddComment">
+                    <input type="text" name="commentInput" placeholder="Enter comment of your own!">
+                    <input type="hidden" name="ID" value="@Model?.ID" />
+                    <input type="submit" value="Add">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a href="/Catalog">Back to the Catalog</a>
+    </div>
+</div>

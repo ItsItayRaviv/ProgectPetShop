@@ -1,0 +1,35 @@
+﻿@model List<ProgectPetShop.Animal>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.PVTMoreInfo = true;
+}
+<select required style="min-width: 15%" onchange="newCategSelected.call(this)">
+    @foreach (ProgectPetShop.Category c in ViewBag.Categories)
+    {
+        <option value="@c.ID">@c.Name</option>
+    }
+</select>
+
+<div id="partialViewContainer">
+    @await Html.PartialAsync("_TablePartial", Model)
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function newCategSelected() {
+        var selectedValue = this.value;
+        $.ajax({
+            url: '/Catalog/CategChanged', // replace with your controller and action names
+            data: { 'id': selectedValue },
+            type: 'POST',
+            success: function (response) {
+                $('#partialViewContainer').html(response);
+                console.log('category changed');
+            },
+            error: function () {
+                console.log('An error occurred');
+            }
+        });
+    }
+</script>

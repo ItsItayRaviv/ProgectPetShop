@@ -1,0 +1,11 @@
+﻿@model string
+@{
+    Layout = "_Layout";
+}
+<body>
+    <div>There was an error contacting the database</div>
+    @if (Model is not null)
+    {
+        <div class="error-message">Error Message: @Model</div>
+    }
+</body>

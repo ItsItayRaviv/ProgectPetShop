@@ -1,0 +1,11 @@
+﻿@model List<ProgectPetShop.Animal>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.PVTDescription = true;
+    ViewBag.PVTCommentNum = true;
+}
+<body>
+    <div>
+        @await Html.PartialAsync("_TablePartial", Model)
+    </div>
+</body>

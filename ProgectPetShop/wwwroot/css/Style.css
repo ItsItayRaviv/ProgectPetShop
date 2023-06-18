@@ -1,0 +1,111 @@
+﻿body {
+
+}
+
+.img-fluid {
+    width: 40vw;
+}
+
+.main-table {
+    width: 99%
+}
+.main-table > tr, td {
+    border-right: 2px solid #fff;
+}
+.myBtn {
+    background-color: #b6b6b6;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+.myBtn a {
+    display: inline-block;
+    text-align: center;
+    font-size: x-large;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: inherit;
+}
+.myBtn a:hover{
+    background-color: #e4e4e4;
+    text-decoration: wavy;
+}
+.tableBtn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    text-decoration: none;
+    background-color: #b6b6b6;
+    border: 1px solid #ccc;
+    border-radius: 14px;
+    color: #333;
+}
+.tableBtn text{
+    color: white;
+    font: bolder;
+}
+
+.tableBtn:hover {
+    background-color: #876321;
+    text-decoration: none;
+}
+.tableBtn.delete:hover{
+    background-color: darkred;
+}
+.tableBtn.new-animal:hover{
+    background-color: lawngreen;
+}
+
+.animal .header {
+    background-color: rosybrown;
+    margin-bottom: 25px;
+    margin-left: 25%;
+    margin-top: 5%;
+    border-radius: 40px;
+    height: 20%;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.animal .header div {
+    font-size: 4vh;
+    font-family: Aharoni
+}
+.animal .descripion {
+    border-radius: 30px;
+    width: 40%;
+}
+.animal .descripion > table {
+    background-color: #f1f1f1;
+}
+
+.animal .descripion > th, td {
+    padding: 10px;
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: #d4d4d4;
+}
+tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+
+.animal .comments {
+    border: 2px solid #ccc;
+    padding: 20px;
+}
+.numbered-lines {
+    counter-reset: line-counter;
+}
+.numbered-lines p:before {
+    counter-increment: line-counter;
+    content: counter(line-counter) ". ";
+}
+.error-message {
+    color: red;
+    font-weight: bold;
+}

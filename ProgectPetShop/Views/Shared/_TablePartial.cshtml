@@ -1,0 +1,85 @@
+﻿@model List<ProgectPetShop.Animal>
+@{
+    if (Model.Count < 1) { return; }
+    bool more = ViewBag?.PVTMoreInfo != null && ViewBag?.PVTMoreInfo;
+    bool age = ViewBag?.PVTAge != null && ViewBag?.PVTAge;
+    bool desc = ViewBag?.PVTDescription != null && ViewBag?.PVTDescription;
+    bool commNum = ViewBag?.PVTCommentNum != null && ViewBag?.PVTCommentNum;
+    bool edit = ViewBag?.PVTEdit != null && ViewBag?.PVTEdit;
+    bool delete = ViewBag?.PVTDelete != null && ViewBag?.PVTDelete;
+}
+<table class="main-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Photo</th>
+            @if (more)
+            {
+            <th>Find out more and comment!</th>
+            }
+            @if (age)
+            {
+            <th>Age</th>
+            }
+            @if (desc)
+            {
+            <th>Description</th>
+            }
+            @if (commNum)
+            {
+            <th>Number of comments</th>
+            }
+            @if (edit)
+            {
+            <th>Edit</th>
+            }
+            @if (delete)
+            {
+            <th>Delete</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var animal in Model)
+        {
+            <tr>
+                <td>@animal.Name</td>
+                <td>
+                    <img class="img-fluid" src="@animal.PictureName" alt="@animal.Name's Photo" />
+                </td>
+                @if (more)
+                {
+                    <td>
+                        <a class="tableBtn" href="Animal/Index/@animal.ID"><text>Find out more!</text></a>
+                    </td>
+                }
+                @if (age)
+                {
+                    <td>@animal.Age</td>
+                }
+                @if (desc)
+                {
+                    <td>@animal.Description</td>
+                }
+                @if (commNum)
+                {
+                    <td>@animal.Comments?.Count</td>
+                }
+                @if (edit)
+                {
+                    <td>
+                        <a class="tableBtn" href="/NewAnimal/Edit/@animal.ID"><text>Edit</text></a>
+                    </td>
+                }
+                @if (delete)
+                {
+                    <td>
+                        <a class="tableBtn delete" href="/Admin/Delete/@animal.ID"><text>Delete</text></a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+
+

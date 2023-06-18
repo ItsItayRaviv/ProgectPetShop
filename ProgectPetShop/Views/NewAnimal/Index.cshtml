@@ -1,0 +1,66 @@
+﻿@model ProgectPetShop.Animal
+@{
+    ViewBag.ShowNavBar = false;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isEdit;
+    if (ViewBag.PreFill is null || ViewBag.PreFill == false)
+    { isEdit = false; }
+    else
+    { isEdit = true;  }
+}
+
+<a class="tableBtn new-animal" href="/Home"><text>Home</text></a>
+<a class="tableBtn new-animal" href="/Admin"><text>Admin</text></a>
+
+@using (Html.BeginForm(isEdit ? "Edit" : "Create", "NewAnimal", FormMethod.Post, new { enctype = "multipart/form-data", @class = "needs-validation", novalidate = "novalidate" }))
+{
+    <div>
+        <label for="name">Name:</label>
+        @Html.TextBoxFor(a => a.Name)
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        @Html.TextBoxFor(a => a.Age, new { @type = "number" })
+    </div>
+    <div>
+        <label for="photo">Photo:</label>
+        <input type="file" name="Photo" accept="image/*" required class="form-control @if(isEdit) { <text>ignore-validation</text>}"/>
+    </div>
+    <div>
+        <label for="description">Description:</label>
+        @Html.TextBoxFor(a => a.Description)
+    </div>
+    <div>
+        <label for="category">Category:</label>
+        <select name="CategoryId" required class="form-control">
+            @foreach (ProgectPetShop.Category c in ViewBag.Categories)
+            {
+                <option value="@c.ID">@c.Name</option>
+            }
+        </select>
+    </div>
+
+    <input id="Submit" type="submit" value="Submit" class="btn myBtn" style="visibility:hidden" />
+}
+
+<script>
+    (function() {
+        var inputs = document.querySelectorAll('.needs-validation input:not(.ignore-validation), .needs-validation select');
+        var submitButton = document.getElementById('Submit');
+
+        function checkInputs() {
+            var valid = true;
+            inputs.forEach(function(input) {
+                if (!input.value) {
+                    valid = false;
+                    return;
+                }
+            });
+            submitButton.style.visibility = valid ? 'visible' : 'hidden';
+        }
+
+        inputs.forEach(function(input) {
+            input.addEventListener('input', checkInputs);
+        });
+    })();
+</script>

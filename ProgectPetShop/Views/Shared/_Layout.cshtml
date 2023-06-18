@@ -1,0 +1,30 @@
+﻿@{
+}
+<link rel="stylesheet" type="text/css" href="~/css/style.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="row">
+        <div class="col-2">
+            <nav class="bg-light">
+                <div>
+                    <img class="img-fluid" id="petshoplogo" src="~/petshoplogo.png" alt="Pet Shop Logo" />
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item myBtn">
+                    <a href="@Url.Action("Index", "Home")"><text>Home</text></a>
+                    </li>
+                    <li class="nav-item myBtn">
+                    <a href="@Url.Action("Index", "Catalog")"><text>Catalog</text></a>
+                    </li>
+                    <li class="nav-item myBtn">
+                    <a href="@Url.Action("Index", "Admin")"><text>Admin</text></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    <div class="col-10">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+</div>
